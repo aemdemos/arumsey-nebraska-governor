@@ -177,4 +177,10 @@ function decorateLinkedPictures(block) {
     a.textContent = '';
     a.append(picture);
   });
+  block.querySelectorAll('p:has(picture + a)').forEach((p) => {
+    const picture = p.querySelector('picture');
+    const a = p.querySelector('a');
+    a.textContent = '';
+    a.append(picture);
+  });
 }

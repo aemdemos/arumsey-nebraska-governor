@@ -11,28 +11,12 @@ export default async function decorate(block) {
   const fragment = await loadFragment('/sidebar');
 
   // decorate sidebar DOM
-  const sidebar = fragment.querySelector(':scope > .section');
-  while (sidebar.firstElementChild) {
-    block.append(sidebar.firstElementChild);
-  }
+  const sections = fragment.querySelectorAll(':scope > .section');
+  const [header, social, posts] = sections;
 
-  const fragmentWrapper = block.querySelectorAll('.fragment-wrapper .section');
-  [...fragmentWrapper].forEach((child) => {
-    if (child.children.length >= 2) {
-      const contentWrapper = document.createElement('div');
-      contentWrapper.classList.add('content-wrapper');
-      contentWrapper.append(child.lastElementChild);
-      block.append(contentWrapper);
-    }
-  });
-  const wrapperSection = block.querySelectorAll('.fragment-wrapper');
-  [...wrapperSection].forEach((child) => {
-    const sectionNumber = child.querySelectorAll('.section').length;
-    if (sectionNumber > 1) {
-      const section = document.createElement('div');
-      section.classList.add('section-wrapper');
-      section.append(child.lastElementChild);
-      block.append(section);
-    }
-  });
+  header.classList.add('header');
+  social.classList.add('social');
+  posts.classList.add('posts');
+
+  block.append(...sections);
 }

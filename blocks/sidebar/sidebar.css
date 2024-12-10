@@ -1,2 +1,28 @@
 /* sidebar styles */
 
+.sidebar > .section {
+    margin-bottom: 8px;
+}
+
+.sidebar > .section:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar .section.social > .default-content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar .section.posts > .default-content-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar .section.posts h2 {
+    font-size: var(--heading-font-size-s);
+}
