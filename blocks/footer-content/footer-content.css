@@ -1,0 +1,33 @@
+.footer-content > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-content img {
+  width: 100%;
+}
+
+.footer-content > div > div {
+  order: 1;
+}
+
+.footer-content > div > .footer-content-img-col {
+  order: 0;
+}
+
+.footer-content > div > .footer-content-img-col img {
+  display: block;
+}
+
+@media (width >= 900px) {
+  .footer-content > div {
+    align-items: center;
+    flex-direction: unset;
+    gap: 24px;
+  }
+
+  .footer-content > div > div {
+    flex: 1;
+    order: unset;
+  }
+}
