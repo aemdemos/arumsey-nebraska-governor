@@ -1,33 +1,82 @@
-.footer-content > div {
+
+.footer-content-wrapper {
+  background-color: #333; /* Dark background color */
+  color: #fff; /* Light text color */
+  padding: 20px;
+}
+
+.footer-content-wrapper > .footer-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Ensure elements are side by side */
+  align-items: flex-start;
 }
 
-.footer-content img {
-  width: 100%;
+.footer-content-wrapper > .footer-content > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Ensure nested elements are aligned vertically within each section */
+  margin-right: 20px;
 }
 
-.footer-content > div > div {
-  order: 1;
+.footer-content-wrapper > .footer-content > div:last-child {
+  margin-right: 0;
+  display: flex;
+  flex-direction: row; /* Ensure nested elements in the right section are aligned horizontally */
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow the text to wrap under the image */
+  align-items: flex-start;
+  gap: 25px;
 }
 
-.footer-content > div > .footer-content-img-col {
-  order: 0;
+.footer-content-wrapper h2,
+.footer-content-wrapper p,
+.footer-content-wrapper a {
+  margin: 0 0 10px 0;
 }
 
-.footer-content > div > .footer-content-img-col img {
-  display: block;
+.footer-content-wrapper a {
+  color: #1e90ff; /* Link color */
 }
 
-@media (width >= 900px) {
-  .footer-content > div {
-    align-items: center;
-    flex-direction: unset;
+.footer-content-wrapper img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px; /* Ensure proper spacing between the image and text */
+}
+
+.footer-content-wrapper .footer-content > div:last-child > div:last-child {
+  text-align: right;
+}
+
+.footer-content-wrapper .footer-content > div:last-child > p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer-content-wrapper .footer-content > div:last-child > p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 900px) {
+  .footer-content-wrapper > .footer-content {
+    align-items: flex-start;
+    flex-direction: row;
     gap: 24px;
   }
 
-  .footer-content > div > div {
+  .footer-content-wrapper > .footer-content > div {
     flex: 1;
     order: unset;
+    margin-right: 20px;
   }
+
+  .footer-content-wrapper > .footer-content > div:last-child {
+      gap: 25%;
+    margin-right: 0;
+  }
+
+    .footer-content-wrapper .footer-content > div:last-child > div:last-child {
+        width: 40%;
+    }
 }
