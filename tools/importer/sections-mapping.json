@@ -57,7 +57,7 @@
                 }
               ],
               "color": "rgb(75, 0, 130)",
-              "mapping": "header",
+              "mapping": "columns",
               "customBlockName": "header-links"
             }
           ],
