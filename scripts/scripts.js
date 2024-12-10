@@ -3,6 +3,8 @@ import {
   buildBlock,
   loadHeader,
   loadFooter,
+  loadBlock,
+  decorateBlock,
   decorateButtons,
   decorateIcons,
   decorateSections,
@@ -13,6 +15,36 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
+
+/**
+ * Builds a sidebar and appends to document.
+ * @param {Element} main The container element
+ */
+function buildSidebar(main) {
+  if (main.parentElement === null) {
+    return;
+  }
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('main-wrapper');
+  main.parentElement.insertBefore(wrapper, main);
+  const sidebar = document.createElement('aside');
+  wrapper.append(main, sidebar);
+}
+
+/**
+ * Loads a block named 'sidebar' into aside
+ * @param aside aside element
+ * @returns {Promise}
+ */
+async function loadSidebar(aside) {
+  if (aside) {
+    const sidebarBlock = buildBlock('sidebar', '');
+    aside.append(sidebarBlock);
+    decorateBlock(sidebarBlock);
+    return loadBlock(sidebarBlock);
+  }
+  return Promise.resolve();
+}
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -48,6 +80,7 @@ async function loadFonts() {
 function buildAutoBlocks(main) {
   try {
     // buildHeroBlock(main);
+    buildSidebar(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -106,6 +139,7 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
+  loadSidebar(doc.querySelector('aside'));
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
 

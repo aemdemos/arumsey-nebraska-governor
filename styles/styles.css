@@ -227,6 +227,44 @@ main img {
   width: 100%;
 }
 
+/* main view */
+body .main-wrapper {
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: 4fr;
+    grid-template-areas: "content" "sidebar";
+    padding: 8px;
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+body .main-wrapper main {
+    grid-area: content;
+}
+
+body .main-wrapper aside {
+    grid-area: sidebar;
+    overflow: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+aside.sidebar-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Avoid inline gaps from images */
+}
+
+aside.sidebar-wrapper p,
+aside.sidebar-wrapper h2,
+aside.sidebar-wrapper a {
+    max-width: 100%;
+    word-wrap: break-word; /* Ensure long text or links break to new lines */
+    overflow-wrap: anywhere;
+}
+
 /* sections */
 main > .section {
   margin: 40px 0;
@@ -246,6 +284,11 @@ main > .section:first-of-type {
   main > .section > div {
     padding: 0 32px;
   }
+
+    body .main-wrapper {
+        grid-template-columns: 25%;
+        grid-template-areas: "sidebar content";
+    }
 }
 
 /* section metadata */
